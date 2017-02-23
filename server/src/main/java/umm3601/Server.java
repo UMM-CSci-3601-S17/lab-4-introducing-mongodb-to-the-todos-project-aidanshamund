@@ -61,7 +61,7 @@ public class Server {
         get("api/todos/:_id", (req, res) -> {
             res.type("application/json");
             String id = req.params("_id");
-            return todoController.getTodo(id);
+            return todoController.listTodos(req.queryMap().toMap());
         });
 
         // Get average ages by company

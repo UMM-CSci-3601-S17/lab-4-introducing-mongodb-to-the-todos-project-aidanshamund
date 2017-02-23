@@ -32,6 +32,12 @@ public class TodoController {
     public String listTodos(Map<String, String[]> queryParameter) {
         Document filterDoc = new Document();
 
+        //Finds with _id
+        if(queryParameter.containsKey("_id")) {
+            String target_id = (queryParameter.get("_id")[0]);
+            filterDoc = filterDoc.append("_id", target_id);
+        }
+
         //status todos
         if(queryParameter.containsKey("status")) {
             boolean targetStatus = Boolean.parseBoolean(queryParameter.get("status")[0]);
